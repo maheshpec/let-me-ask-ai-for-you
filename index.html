@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Let Me Ask AI For You</title>
+  <meta name="description" content="Generate a passive-aggressive link that shows someone how to ask ChatGPT themselves." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HOME VIEW -->
+  <div id="home-view" class="view">
+    <div class="bg-grid"></div>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+    <header class="site-header">
+      <div class="logo">
+        <span class="logo-icon">🤖</span>
+        <span class="logo-text">lmaafy</span>
+      </div>
+    </header>
+
+    <main class="home-main">
+      <div class="hero">
+        <div class="badge">Passive-aggressive tech support since 2024</div>
+        <h1 class="hero-title">
+          Let Me Ask<br/>
+          <span class="gradient-text">AI For You</span>
+        </h1>
+        <p class="hero-subtitle">
+          For those special people in your life who need to be shown<br class="br-desktop"/>
+          that ChatGPT exists and is free.
+        </p>
+      </div>
+
+      <div class="card form-card">
+        <div class="card-inner">
+          <label class="form-label" for="query-input">
+            What did they ask <em>you</em> instead?
+          </label>
+          <div class="input-group">
+            <span class="input-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </span>
+            <input
+              type="text"
+              id="query-input"
+              class="query-input"
+              placeholder="e.g. how do I convert fahrenheit to celsius"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button id="generate-btn" class="generate-btn" aria-label="Generate link">
+              Generate
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </div>
+
+          <div id="result-panel" class="result-panel hidden">
+            <div class="result-divider">
+              <span>Your link is ready</span>
+            </div>
+            <div class="result-link-row">
+              <div class="result-url-wrap">
+                <span class="result-url-icon">🔗</span>
+                <span id="result-url" class="result-url"></span>
+              </div>
+              <button id="copy-btn" class="copy-btn" aria-label="Copy link">
+                <svg id="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <svg id="check-icon" class="hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span id="copy-label">Copy</span>
+              </button>
+            </div>
+            <div class="result-actions">
+              <button id="preview-btn" class="action-btn action-btn-secondary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                Preview
+              </button>
+              <button id="share-btn" class="action-btn action-btn-secondary" style="display:none">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                Share
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-it-works">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">Type the question they asked <em>you</em></div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">Copy the generated link</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">Send it to them & feel smug</div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>Made with 🤖 &amp; passive aggression &nbsp;·&nbsp; Not affiliated with OpenAI</p>
+    </footer>
+  </div>
+
+  <!-- PLAYBACK VIEW -->
+  <div id="playback-view" class="view hidden">
+    <div class="bg-grid"></div>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+    <div class="playback-wrap">
+      <div class="playback-header">
+        <span class="logo-icon">🤖</span>
+        <span>let me ask ai for you</span>
+      </div>
+
+      <!-- Fake browser window -->
+      <div class="browser-shell">
+        <div class="browser-chrome">
+          <div class="browser-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <div class="browser-address-bar">
+            <span class="browser-lock">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </span>
+            <span id="address-text" class="address-text">chat.openai.com</span>
+          </div>
+        </div>
+        <div class="browser-body">
+          <!-- Fake ChatGPT UI -->
+          <div class="chatgpt-ui">
+            <div class="chatgpt-sidebar">
+              <div class="chatgpt-logo">
+                <svg width="24" height="24" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M37.532 16.87a9.963 9.963 0 0 0-.856-8.184 10.078 10.078 0 0 0-10.855-4.835 9.964 9.964 0 0 0-6.259-2.325 10.078 10.078 0 0 0-9.604 6.977 9.967 9.967 0 0 0-6.664 4.834 10.08 10.08 0 0 0 1.24 11.817 9.965 9.965 0 0 0 .856 8.185 10.079 10.079 0 0 0 10.855 4.835 9.965 9.965 0 0 0 6.259 2.325 10.078 10.078 0 0 0 9.604-6.978 9.967 9.967 0 0 0 6.663-4.834 10.079 10.079 0 0 0-1.239-11.817Zm-5.31 10.566a7.506 7.506 0 0 1-4.778 3.355.268.268 0 0 0-.32-.054l-.003.002c-.168.086-.33.18-.498.264-.195.097-.395.185-.596.267a7.986 7.986 0 0 1-.756.254c-2.967.806-6.006-.26-7.853-2.634l.005-.007.344-.21c.196-.12.386-.249.57-.385.17-.124.333-.257.49-.398l.004-.004.003-.002a7.5 7.5 0 0 0 2.72-5.897c0-.215-.01-.43-.03-.644a7.472 7.472 0 0 0-.658-2.52c-.08-.18-.165-.357-.258-.529-.054-.1-.109-.198-.167-.295a7.504 7.504 0 0 0-2.61-2.545l-.006-.003c-.034-.022-.074-.036-.11-.056-.228-.123-.46-.237-.697-.341a7.996 7.996 0 0 0-.746-.272c-.29-.09-.586-.163-.885-.217l-.013-.002c-.003 0-.007 0-.01-.002a7.516 7.516 0 0 0-1.198-.097c-.09 0-.178.004-.267.008a7.558 7.558 0 0 0-2.51.528l-.029.011-.006.003a7.492 7.492 0 0 0-4.078 4.072l-.004.01-.006.018a7.517 7.517 0 0 0-.448 2.08 7.502 7.502 0 0 0 .13 1.943c.002.006.002.013.003.019a7.494 7.494 0 0 0 1.254 3.072 7.503 7.503 0 0 0 2.418 2.22c.235.139.479.265.728.378.158.071.318.138.48.198.199.074.4.14.604.197.3.084.606.152.916.2.17.027.341.048.513.063l.03.003c.02.002.04.002.062.003a7.51 7.51 0 0 0 1.23 0l.048-.004a7.492 7.492 0 0 0 2.437-.643l.03-.014.007-.003a7.503 7.503 0 0 0 4.078-4.073l.004-.01.004-.011a7.508 7.508 0 0 0 .447-2.08c.002-.025.002-.05.003-.074a7.5 7.5 0 0 0-.128-1.867l-.004-.022a7.495 7.495 0 0 0-1.254-3.073 7.503 7.503 0 0 0-2.419-2.219 7.52 7.52 0 0 0-.727-.378 7.493 7.493 0 0 0-.48-.199 7.515 7.515 0 0 0-.604-.196 7.538 7.538 0 0 0-.917-.2 7.494 7.494 0 0 0-.512-.064l-.03-.002a7.507 7.507 0 0 0-1.293.003" fill="currentColor"/></svg>
+              </div>
+              <div class="chatgpt-new-chat">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                New chat
+              </div>
+            </div>
+            <div class="chatgpt-main">
+              <div class="chatgpt-messages" id="chatgpt-messages">
+                <div class="chatgpt-empty-state">
+                  <div class="chatgpt-logo-big">
+                    <svg width="40" height="40" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M37.532 16.87a9.963 9.963 0 0 0-.856-8.184 10.078 10.078 0 0 0-10.855-4.835 9.964 9.964 0 0 0-6.259-2.325 10.078 10.078 0 0 0-9.604 6.977 9.967 9.967 0 0 0-6.664 4.834 10.08 10.08 0 0 0 1.24 11.817 9.965 9.965 0 0 0 .856 8.185 10.079 10.079 0 0 0 10.855 4.835 9.965 9.965 0 0 0 6.259 2.325 10.078 10.078 0 0 0 9.604-6.978 9.967 9.967 0 0 0 6.663-4.834 10.079 10.079 0 0 0-1.239-11.817Zm-5.31 10.566a7.506 7.506 0 0 1-4.778 3.355.268.268 0 0 0-.32-.054l-.003.002c-.168.086-.33.18-.498.264-.195.097-.395.185-.596.267a7.986 7.986 0 0 1-.756.254c-2.967.806-6.006-.26-7.853-2.634l.005-.007.344-.21c.196-.12.386-.249.57-.385.17-.124.333-.257.49-.398l.004-.004.003-.002a7.5 7.5 0 0 0 2.72-5.897c0-.215-.01-.43-.03-.644a7.472 7.472 0 0 0-.658-2.52c-.08-.18-.165-.357-.258-.529-.054-.1-.109-.198-.167-.295a7.504 7.504 0 0 0-2.61-2.545l-.006-.003c-.034-.022-.074-.036-.11-.056-.228-.123-.46-.237-.697-.341a7.996 7.996 0 0 0-.746-.272c-.29-.09-.586-.163-.885-.217l-.013-.002c-.003 0-.007 0-.01-.002a7.516 7.516 0 0 0-1.198-.097c-.09 0-.178.004-.267.008a7.558 7.558 0 0 0-2.51.528l-.029.011-.006.003a7.492 7.492 0 0 0-4.078 4.072l-.004.01-.006.018a7.517 7.517 0 0 0-.448 2.08 7.502 7.502 0 0 0 .13 1.943c.002.006.002.013.003.019a7.494 7.494 0 0 0 1.254 3.072 7.503 7.503 0 0 0 2.418 2.22c.235.139.479.265.728.378.158.071.318.138.48.198.199.074.4.14.604.197.3.084.606.152.916.2.17.027.341.048.513.063l.03.003c.02.002.04.002.062.003a7.51 7.51 0 0 0 1.23 0l.048-.004a7.492 7.492 0 0 0 2.437-.643l.03-.014.007-.003a7.503 7.503 0 0 0 4.078-4.073l.004-.01.004-.011a7.508 7.508 0 0 0 .447-2.08c.002-.025.002-.05.003-.074a7.5 7.5 0 0 0-.128-1.867l-.004-.022a7.495 7.495 0 0 0-1.254-3.073 7.503 7.503 0 0 0-2.419-2.219 7.52 7.52 0 0 0-.727-.378 7.493 7.493 0 0 0-.48-.199 7.515 7.515 0 0 0-.604-.196 7.538 7.538 0 0 0-.917-.2 7.494 7.494 0 0 0-.512-.064l-.03-.002a7.507 7.507 0 0 0-1.293.003" fill="currentColor"/></svg>
+                  </div>
+                  <p>How can I help you today?</p>
+                </div>
+              </div>
+              <div class="chatgpt-input-area">
+                <div class="chatgpt-input-box">
+                  <span id="fake-cursor" class="fake-cursor"></span>
+                  <span id="typed-text" class="typed-text"></span>
+                  <div class="chatgpt-input-actions">
+                    <button class="chatgpt-send-btn" id="fake-send-btn" disabled>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></svg>
+                    </button>
+                  </div>
+                </div>
+                <p class="chatgpt-disclaimer">AI can make mistakes. Was that so hard?</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Message overlay -->
+      <div id="snark-overlay" class="snark-overlay hidden">
+        <div class="snark-card">
+          <div class="snark-emoji">🎉</div>
+          <h2 class="snark-title">Was that so hard?</h2>
+          <p class="snark-body">Taking you to ChatGPT now so you can<br/>do this yourself next time…</p>
+          <div class="snark-progress">
+            <div class="snark-progress-bar" id="snark-progress-bar"></div>
+          </div>
+          <button id="go-now-btn" class="go-now-btn">
+            Go now →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
