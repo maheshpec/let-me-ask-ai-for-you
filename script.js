@@ -47,7 +47,11 @@ function showPlayback(query) {
 /* ==============================
    HOME — GENERATE LINK
    ============================== */
+generateBtn.disabled = true; // disabled on load until user types
 generateBtn.addEventListener('click', generateLink);
+queryInput.addEventListener('input', () => {
+  generateBtn.disabled = queryInput.value.trim() === '';
+});
 queryInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') generateLink();
 });

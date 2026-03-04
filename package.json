@@ -1,0 +1,21 @@
+{
+  "name": "let-me-ask-ai-for-you",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:pages": "BASE_URL=https://maheshpec.github.io/let-me-ask-ai-for-you playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://local_proxy@127.0.0.1:33005/git/maheshpec/let-me-ask-ai-for-you"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1"
+  },
+  "type": "module"
+}
