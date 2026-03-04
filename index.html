@@ -181,12 +181,16 @@
         <div class="snark-card">
           <div class="snark-emoji">🎉</div>
           <h2 class="snark-title">Was that so hard?</h2>
-          <p class="snark-body">Taking you to ChatGPT now so you can<br/>do this yourself next time…</p>
+          <p class="snark-body" id="snark-body">Your question has been copied to your clipboard.<br/>Opening ChatGPT — just paste it in.</p>
+          <div class="snark-clipboard-hint" id="snark-clipboard-hint">
+            <span class="snark-clipboard-icon">📋</span>
+            <span id="snark-query-preview" class="snark-query-preview"></span>
+          </div>
           <div class="snark-progress">
             <div class="snark-progress-bar" id="snark-progress-bar"></div>
           </div>
           <button id="go-now-btn" class="go-now-btn">
-            Go now →
+            Open ChatGPT →
           </button>
         </div>
       </div>

@@ -273,7 +273,29 @@ function getAIResponse(query) {
 /* ==============================
    SNARK OVERLAY + REDIRECT
    ============================== */
-function showSnarkOverlay(query) {
+const snarkBody         = document.getElementById('snark-body');
+const snarkQueryPreview = document.getElementById('snark-query-preview');
+
+async function showSnarkOverlay(query) {
+  // Try to copy query to clipboard before showing overlay
+  let copied = false;
+  try {
+    await navigator.clipboard.writeText(query);
+    copied = true;
+  } catch (_) {
+    // Clipboard may be unavailable (e.g. non-secure context) — gracefully degrade
+  }
+
+  // Update overlay text based on clipboard success
+  if (copied) {
+    snarkBody.innerHTML = 'Your question has been copied to your clipboard.<br/>Opening ChatGPT — just paste it in.';
+  } else {
+    snarkBody.innerHTML = 'Opening ChatGPT in a new tab.<br/>Copy the question below and paste it in.';
+  }
+
+  // Show query preview so they can copy it manually if needed
+  snarkQueryPreview.textContent = query;
+
   snarkOverlay.classList.remove('hidden');
 
   const DURATION = 5000; // ms
@@ -298,8 +320,9 @@ function showSnarkOverlay(query) {
 }
 
 function redirectToChatGPT(query) {
-  const url = `https://chat.openai.com/?q=${encodeURIComponent(query)}`;
-  window.location.href = url;
+  // ChatGPT doesn't support pre-filling via URL params, so we open the base
+  // URL in a new tab. The query is already on the clipboard for easy pasting.
+  window.open('https://chatgpt.com/', '_blank', 'noopener,noreferrer');
 }
 
 /* ==============================
