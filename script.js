@@ -188,7 +188,7 @@ function onTypingDone(query) {
 
   setTimeout(() => {
     sendMessage(query);
-  }, 800);
+  }, 1600);
 }
 
 function sendMessage(query) {
